@@ -23,12 +23,12 @@ class BaseSolver(ABC):
     def _part_two(self, debug=False) -> any:
         raise NotImplementedError("Part two is not implemented yet")
 
-    def _parse_input(self):
+    def _parse_input(self) -> any:
         pass
 
     def print_raw_input(self):
         with open(self.input_path) as file:
-            print(file.readlines())
+            print(file.read())
 
     def __str__(self):
         return f"Solver for {self.day}, Input path: {self.input_path}"

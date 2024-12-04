@@ -7,6 +7,7 @@ day_solvers_modules_instances = {
     1: ["solvers.day1", "day1"],
     2: ["solvers.day2", "day2"],
     3: ["solvers.day3", "day3"],
+    4: ["solvers.day4", "day4"],
 }
 
 

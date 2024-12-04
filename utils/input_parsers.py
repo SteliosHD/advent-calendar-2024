@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 DUMMY_CONST = 91234
@@ -15,6 +16,13 @@ def parse_raw_txt_string(file_path: str) -> str:
 
 def pandas_parser(file_path, sep=r"\s+"):
     return pd.read_csv(file_path, sep=sep, header=None, on_bad_lines="warn")
+
+
+def day_4_custom_parser(file_path, sep=r"\s+"):
+    with open(file_path, "r") as file:
+        lines = [line.strip().split(sep) for line in file]
+    char_array_list = [[ch for ch in line[0]] for line in lines]
+    return np.array(char_array_list).astype(str)
 
 
 def pandas_custom_parser(file_path, sep=" ", dtype=int):
