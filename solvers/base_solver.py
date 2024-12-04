@@ -18,10 +18,10 @@ class BaseSolver(ABC):
         print(result)
 
     def _part_one(self, debug=False) -> any:
-        pass
+        raise NotImplementedError("Part one is not implemented yet")
 
     def _part_two(self, debug=False) -> any:
-        pass
+        raise NotImplementedError("Part two is not implemented yet")
 
     def _parse_input(self):
         pass
