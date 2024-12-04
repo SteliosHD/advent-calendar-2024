@@ -1,32 +1,34 @@
 import typer
-
-from solvers.day2 import day2
-from solvers.day1 import day1
+from importlib import import_module
 
 app = typer.Typer()
 
-
-@app.command(name="1A")
-def day_1_first():
-    day1.run(part=1)
-
-
-@app.command(name="1B")
-def day_1_second():
-    day1.run(part=2)
+day_solvers_modules_instances = {
+    1: ["solvers.day1", "day1"],
+    2: ["solvers.day2", "day2"],
+    3: ["solvers.day3", "day3"],
+}
 
 
-@app.command(name="2A")
-def day_2_first(debug: bool = typer.Option(False, "--debug", help="Enable debug mode")):
-    day2.run(part=1, debug=debug)
+def create_command(day: int, part: int, instance_name: str):
+    """
+    Factory function to create a command for a specific day and part.
+    """
+
+    def command(debug: bool = typer.Option(False, "--debug", help="Enable debug mode")):
+        solver_module = import_module(
+            day_solvers_modules_instances[day][0],
+        )
+        solver_instance = getattr(solver_module, instance_name)
+        solver_instance.run(part=part, debug=debug)
+
+    return command
 
 
-@app.command(name="2B")
-def day_2_second(
-    debug: bool = typer.Option(False, "--debug", help="Enable debug mode"),
-):
-    day2.run(part=2, debug=debug)
-
+for day, module_instance in day_solvers_modules_instances.items():
+    for part in [1, 2]:
+        command_name = f"{day}{'A' if part == 1 else 'B'}"
+        app.command(name=command_name)(create_command(day, part, module_instance[1]))
 
 if __name__ == "__main__":
     app()

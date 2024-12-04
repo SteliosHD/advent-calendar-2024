@@ -4,7 +4,7 @@ import numpy as np
 import numpy.typing as npt
 
 from solvers.base_solver import BaseSolver
-from utils.input_parser import pandas_custom_parser, DUMMY_CONST
+from utils.input_parsers import pandas_custom_parser, DUMMY_CONST
 
 
 class Day2Solver(BaseSolver):

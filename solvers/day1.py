@@ -1,7 +1,7 @@
 from functools import lru_cache
 
 from solvers.base_solver import BaseSolver
-from utils.input_parser import pandas_parser
+from utils.input_parsers import pandas_parser
 import numpy.typing as npt
 import collections
 

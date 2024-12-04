@@ -8,6 +8,11 @@ def parser_raw_txt(file_path):
         return file.readlines()
 
 
+def parse_raw_txt_string(file_path: str) -> str:
+    with open(file_path) as file:
+        return file.read().rstrip()
+
+
 def pandas_parser(file_path, sep=r"\s+"):
     return pd.read_csv(file_path, sep=sep, header=None, on_bad_lines="warn")
 
