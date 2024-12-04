@@ -6,21 +6,21 @@ class BaseSolver(ABC):
         self.day: str = day
         self.input_path: str = input_path
 
-    def run(self, part: int = 1, print_result=True):
+    def run(self, part: int = 1, print_result=True, debug=False):
         if part == 1:
-            result = self._part_one()
+            result = self._part_one(debug)
         elif part == 2:
-            result = self._part_two()
+            result = self._part_two(debug)
         else:
             raise ValueError("Part must be 1 or 2")
         if not print_result:
             return result
         print(result)
 
-    def _part_one(self) -> any:
+    def _part_one(self, debug=False) -> any:
         pass
 
-    def _part_two(self) -> any:
+    def _part_two(self, debug=False) -> any:
         pass
 
     def _parse_input(self):

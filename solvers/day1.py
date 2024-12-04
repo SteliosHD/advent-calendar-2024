@@ -14,13 +14,13 @@ class Day1Solver(BaseSolver):
         right_column: npt.NDArray = input_df[1].to_numpy()
         return left_column, right_column
 
-    def _part_one(self) -> int:
+    def _part_one(self, debug=False) -> int:
         left_column, right_column = self._parse_input()
         left_column.sort()
         right_column.sort()
         return sum(abs(left_column - right_column))
 
-    def _part_two(self) -> int:
+    def _part_two(self, debug=False) -> int:
         left_column, right_column = self._parse_input()
         left_column.sort()
         right_column.sort()
