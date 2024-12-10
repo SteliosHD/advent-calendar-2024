@@ -9,6 +9,11 @@ def parser_raw_txt(file_path):
         return file.readlines()
 
 
+def parse_raw_txt_in_list(file_path: str, sep: str = " "):
+    file_lines = parser_raw_txt(file_path)
+    return [line.strip().split(sep) for line in file_lines]
+
+
 def parse_raw_txt_string(file_path: str) -> str:
     with open(file_path) as file:
         return file.read().rstrip()

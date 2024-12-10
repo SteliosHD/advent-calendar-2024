@@ -2,9 +2,10 @@ from abc import ABC
 
 
 class BaseSolver(ABC):
-    def __init__(self, day: str, input_path: str):
+    def __init__(self, day: str, input_path: str = "", input_paths=None):
         self.day: str = day
         self.input_path: str = input_path
+        self.input_paths: list[str] = input_paths
 
     def run(self, part: int = 1, print_result=True, debug=False):
         if part == 1:
